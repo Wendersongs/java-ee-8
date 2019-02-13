@@ -14,5 +14,6 @@ public class CaveraServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("funfou!");
+        resp.getWriter().append("ok, cavera!");
     }
 }
