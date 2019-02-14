@@ -1,7 +1,6 @@
 package cdi;
 
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import java.io.Serializable;
 
 

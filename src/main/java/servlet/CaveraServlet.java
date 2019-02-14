@@ -17,19 +17,21 @@ import java.io.IOException;
 public class CaveraServlet extends HttpServlet {
 
     @Inject
-    private ApplicationBean printableObj;
+    private ApplicationBean printableObj1;
 
     @Inject
-    private RequestBean printableObj;
+    private RequestBean printableObj2;
 
     @Inject
-    private SessionBean printableObj;
+    private SessionBean printableObj3;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("funfou!");
         resp.getWriter().append("ok, cavera!");
 
-        System.out.println("ApplicationBean: "+ );
+        System.out.println("ApplicationBean: "+printableObj1.contador );
+        System.out.println("ApplicationBean: "+printableObj2.contador );
+        System.out.println("ApplicationBean: "+printableObj3.contador );
     }
 }

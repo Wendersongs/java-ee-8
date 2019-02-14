@@ -1,7 +1,6 @@
 package cdi;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import java.io.Serializable;
 
 
