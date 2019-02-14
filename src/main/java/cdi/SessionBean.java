@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class SessionBean implements Serializable {
     private static int contador=0;
 
-    public ApplicationBean (){
+    public SessionBean (){
         contador++;
     }
 }
