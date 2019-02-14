@@ -28,12 +28,12 @@ public class CaveraServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        System.out.println("ApplicationBean: "+printableObj1.contador );
-        System.out.println("RequestBean: "+printableObj2.contador );
-        System.out.println("SessionBean: "+printableObj3.contador );
+        System.out.println("ApplicationBean: "+printableObj1.getContador() );
+        System.out.println("RequestBean: "+printableObj2.getContador() );
+        System.out.println("SessionBean: "+printableObj3.getContador() );
 
-        resp.getWriter().append("ApplicationBean: "+printableObj1.contador );
-        resp.getWriter().append("RequestBean: "+printableObj2.contador );
-        resp.getWriter().append("SessionBean: "+printableObj3.contador );
+        resp.getWriter().append("ApplicationBean: "+ printableObj1.getContador() + "\n" );
+        resp.getWriter().append("RequestBean: "+ printableObj2.getContador() + "\n" );
+        resp.getWriter().append("SessionBean: "+ printableObj3.getContador() + "\n" );
     }
 }
