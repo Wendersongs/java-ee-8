@@ -6,27 +6,28 @@ import javax.enterprise.context.ApplicationScoped;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-
 @ApplicationScoped
 public class ApplicationBean implements Serializable {
-    private static Integer contador=0;
 
-    public ApplicationBean (){
+    public static int contador;
+
+    public ApplicationBean() {
         contador++;
+        System.out.println("ApplicationBean - Construtor: " + LocalDateTime.now());
     }
 
-    public String getContador () {
-        return contador.toString();
+    public String imprimeContador (){
+        return String.valueOf(contador);
     }
 
     @PostConstruct
-    private void watchNascimento () {
-        System.out.println("ApplicationBean: Fui criado!" + LocalDateTime.now());
+    private void innit (){
+        System.out.println("ApplicationBean - PostConstruct: " + LocalDateTime.now());
     }
 
     @PreDestroy
-    private void watchMorte () {
-        System.out.println("ApplicationBean: Morrendo..." + LocalDateTime.now());
+    private void end (){
+        System.out.println("ApplicationBean - PreDestroy: " + LocalDateTime.now());
     }
-}
 
+}

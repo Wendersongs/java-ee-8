@@ -6,26 +6,27 @@ import javax.enterprise.context.RequestScoped;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-
 @RequestScoped
 public class RequestBean implements Serializable {
-    private static Integer contador=0;
 
-    public RequestBean (){
+    public static int contador;
+
+    public RequestBean() {
+        System.out.println("RequestBean - Construtor: " + LocalDateTime.now());
         contador++;
     }
 
-    public String getContador () {
-        return contador.toString();
+    public String imprimeContador (){
+        return String.valueOf(contador);
     }
 
     @PostConstruct
-    private void watchNascimento () {
-        System.out.println("RequestBean: Fui criado!" + LocalDateTime.now());
+    private void innit (){
+        System.out.println("RequestBean - PostConstruct: " + LocalDateTime.now());
     }
 
     @PreDestroy
-    private void watchMorte () {
-        System.out.println("RequestBean: Morrendo..." + LocalDateTime.now());
+    private void end (){
+        System.out.println("RequestBean - PreDestroy: " + LocalDateTime.now());
     }
 }

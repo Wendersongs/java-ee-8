@@ -6,26 +6,27 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-
 @SessionScoped
 public class SessionBean implements Serializable {
-    private static Integer contador=0;
 
-    public SessionBean (){
+    public static int contador;
+
+    public SessionBean() {
+        System.out.println("RequestBean - Construtor: " + LocalDateTime.now());
         contador++;
     }
 
-    public String getContador () {
-        return contador.toString();
+    public String imprimeContador (){
+        return String.valueOf(contador);
     }
 
     @PostConstruct
-    private void watchNascimento () {
-        System.out.println("SessionBean: Fui criado!" + LocalDateTime.now());
+    private void innit (){
+        System.out.println("SessionBean - PostConstruct: " + LocalDateTime.now());
     }
 
     @PreDestroy
-    private void watchMorte () {
-        System.out.println("SessionBean: Morrendo..." + LocalDateTime.now());
+    private void end (){
+        System.out.println("SessionBean - PreDestroy: " + LocalDateTime.now());
     }
 }
