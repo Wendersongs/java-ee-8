@@ -54,6 +54,8 @@
                 <p:outputLabel value="Telefone:" for="acTelefone"/>
                 <p:autoComplete id="acTelefone" value="#{pessoaController.pessoaForm.telefone}"
                                 completeMethod="#{pessoaController.completeTelefone}"/>
+
+
             </h:panelGrid>
         </p:panel>
 
@@ -65,7 +67,7 @@
                          style="margin-right:20px;" icon="pi pi-save"/>
 
 
-        <p:commandButton value="Exluir" id="withIcon3" action="#{pessoaController.excluir}" update="@form"
+        <p:commandButton value="Excluir" id="withIcon3" action="#{pessoaController.excluir}" update="@form"
                          style="margin-right:20px;" icon="pi pi-save"/>
 
         <br/>
