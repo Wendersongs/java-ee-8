@@ -5,6 +5,7 @@ import repository.PessoaDAO;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@SessionScoped
+@ViewScoped
 @Named
 public class PessoaController implements Serializable {
     private Pessoa pessoaForm;
@@ -25,11 +26,12 @@ public class PessoaController implements Serializable {
     @PostConstruct
     private void innit (){
         pessoaForm = new Pessoa();
-        pessoas = new ArrayList<>();
+        atualizarTabela();
     }
 
     public void cadastrar(){
        pessoaDAO.salvar(pessoaForm);
+       atualizarTabela();
     }
 
     public void limpar(){
@@ -37,7 +39,13 @@ public class PessoaController implements Serializable {
     }
 
     public void excluir(){
-        this.pessoas.remove(pessoaForm);
+        //this.pessoas.remove(pessoaForm);
+        pessoaDAO.remover(pessoaSelecionada);
+        atualizarTabela();
+    }
+
+    private void atualizarTabela(){
+        pessoas = pessoaDAO.consultar();
     }
 
     public void aoSelecionar(){

@@ -1,9 +1,7 @@
 package modelo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -13,7 +11,10 @@ public class Pessoa implements Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotEmpty (message = "PORRA, TÁ VAZIO")
     private String nome;
+
     private String cpf;
     private String endereco;
     private String telefone;
@@ -78,5 +79,11 @@ public class Pessoa implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @PrePersist
+    @PreUpdate
+    public void preSalvar () {
+        dataCriacao = LocalDateTime.now();
     }
 }
