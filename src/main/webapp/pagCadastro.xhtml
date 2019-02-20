@@ -16,16 +16,13 @@
         .ui-datalist .ui-datalist-content {
             border: 0 none
         }
-
         .ui-datalist ul {
             padding: 0px 10px 0 20px;
             margin: 5px 0;
         }
-
         .value {
             font-weight: bold;
         }
-
         .ui-autocomplete-itemtip {
             -moz-box-sizing: content-box;
             -webkit-box-sizing: content-box;
@@ -39,23 +36,20 @@
         <p:panel id="formularioPessoa" header="Cadastro de Pessoas" style="margin-bottom:40px">
             <h:panelGrid columns="2" cellpadding="2">
 
+                <p:outputLabel value="ID:" for="acID"/>
+                <p:autoComplete id="acID" value="#{pessoaController.pessoaForm.id}" enabled="false"/>
+
                 <p:outputLabel value="Nome:" for="acNome"/>
-                <p:autoComplete id="acNome" value="#{pessoaController.pessoaForm.nome}"
-                                completeMethod="#{pessoaController.completeNome}"/>
+                <p:autoComplete id="acNome" value="#{pessoaController.pessoaForm.nome}"/>
 
                 <p:outputLabel value="CPF:" for="acCPF"/>
-                <p:autoComplete id="acCPF" value="#{pessoaController.pessoaForm.cpf}"
-                                completeMethod="#{pessoaController.completeCPF}"/>
+                <p:autoComplete id="acCPF" value="#{pessoaController.pessoaForm.cpf}"/>
 
                 <p:outputLabel value="Endereço:" for="acEndereco"/>
-                <p:autoComplete id="acEndereco" value="#{pessoaController.pessoaForm.endereco}"
-                                completeMethod="#{pessoaController.completeEndereco}"/>
+                <p:autoComplete id="acEndereco" value="#{pessoaController.pessoaForm.endereco}"/>
 
                 <p:outputLabel value="Telefone:" for="acTelefone"/>
-                <p:autoComplete id="acTelefone" value="#{pessoaController.pessoaForm.telefone}"
-                                completeMethod="#{pessoaController.completeTelefone}"/>
-
-
+                <p:autoComplete id="acTelefone" value="#{pessoaController.pessoaForm.telefone}"/>
             </h:panelGrid>
         </p:panel>
 
@@ -66,8 +60,7 @@
         <p:commandButton value="Limpar" id="withIcon2" action="#{pessoaController.limpar}" update="@form"
                          style="margin-right:20px;" icon="pi pi-save"/>
 
-
-        <p:commandButton value="Excluir" id="withIcon3" action="#{pessoaController.excluir}" update="@form"
+        <p:commandButton value="Exluir" id="withIcon3" action="#{pessoaController.excluir}" update="@form"
                          style="margin-right:20px;" icon="pi pi-save"/>
 
         <br/>
@@ -76,6 +69,10 @@
         <p:dataTable id="tabelaPessoa" var="pessoa" value="#{pessoaController.pessoas}" selectionMode="single" selection="#{pessoaController.pessoaSelecionada}" rowKey="#{pessoa}" >
             <p:ajax event="rowSelect" listener="#{pessoaController.aoSelecionar}" update="@form" />
             <p:ajax event="rowUnselect" listener="#{pessoaController.aoDesselecionar}" update="@form" />
+
+            <p:column headerText="ID">
+                <h:outputText value="#{pessoa.id}"/>
+            </p:column>
 
             <p:column headerText="Nome">
                 <h:outputText value="#{pessoa.nome}"/>
